@@ -3,6 +3,8 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from './Home';
 import CreateNewWallet from './CreateNewWallet';
+import CreatePassword from './CreatePassword';
+import DisplayAddress from './DisplayAddress';
 
 function App() {
   return (
@@ -11,6 +13,8 @@ function App() {
           <Routes>
             <Route path='/' element={<Home/>} />
             <Route path='/create-new-wallet' element={<CreateNewWallet/>} />
+            <Route path='/create-password' element={<CreatePassword/>} />
+            <Route path='/display-address' element={<DisplayAddress/>} />
           </Routes>
       </Router>
     </div>
