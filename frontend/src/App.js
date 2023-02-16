@@ -5,6 +5,8 @@ import Home from './Home';
 import CreateNewWallet from './CreateNewWallet';
 import CreatePassword from './CreatePassword';
 import DisplayAddress from './DisplayAddress';
+import WalletInfo from './WalletInfo';
+import SendTransaction from './SendTransaction';
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
             <Route path='/create-new-wallet' element={<CreateNewWallet/>} />
             <Route path='/create-password' element={<CreatePassword/>} />
             <Route path='/display-address' element={<DisplayAddress/>} />
+            <Route path='/wallet' element={<WalletInfo/>} />
+            <Route path='/send-transaction' element={<SendTransaction/>} />
           </Routes>
       </Router>
     </div>
