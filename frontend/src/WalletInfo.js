@@ -40,9 +40,12 @@ function WalletInfo(){
 
     return(
         <div>
-            <h1>Wallet Info:</h1>
-            <div>{PUBLIC_ADDRESS}</div>
+            <h1>Wallet Information:</h1>
+            <h2>Your public address:</h2>
+            <p>{PUBLIC_ADDRESS}</p>
+            <p></p>
             <button onClick={hanldeSendTransaction}>Send Transaction</button>
+            <h2>Your balances:</h2>
             <div className='token-balance'>
                 {tokens.map(token => {
                     return (
