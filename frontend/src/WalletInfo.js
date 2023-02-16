@@ -33,8 +33,6 @@ function WalletInfo(){
     function hanldeSendTransaction(evt){
         evt.preventDefault();
         console.log("hanldeSendTransaction clicked");
-        
-        console.log(alchemy, wallet, tokens);
         navigate('/send-transaction', {state: {settings: settings, allTokens: tokens}});
     }
 
