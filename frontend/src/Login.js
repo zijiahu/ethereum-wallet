@@ -1,14 +1,17 @@
 import React, {useState, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Wallet } from 'alchemy-sdk';
 
 function Login(){
     const [privateKey,setPrivateKey] = useState('');
+    const navigate = useNavigate();
 
     function handleOnClick(evt){
         evt.preventDefault();
         let wallet = new Wallet(privateKey);
         localStorage.setItem("address", wallet.address);
         localStorage.setItem("privateKey", privateKey);
+        navigate("/wallet");
     }
 
     return(
