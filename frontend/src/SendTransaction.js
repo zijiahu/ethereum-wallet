@@ -15,7 +15,7 @@ function SendTransaction(){
     const location = useLocation();
 
     const alchemy = new Alchemy(location.state.settings);
-    const wallet = new Wallet(location.state.address);
+    const wallet = new Wallet(localStorage.getItem("privateKey"));
     const allTokens = location.state.allTokens;
 
     async function send(evt) {
@@ -63,7 +63,7 @@ function SendTransaction(){
                         <select onChange={(e) => setToken(e.target.value)}>
                             {allTokens.map(t => {
                                 return (
-                                    <option>{t.name}</option>
+                                    <option key={t.name}>{t.name}</option>
                                 )
                             })}
                         </select>
