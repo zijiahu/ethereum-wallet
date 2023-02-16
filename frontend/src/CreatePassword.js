@@ -29,6 +29,9 @@ function CreatePassword(){
 
         let result = createAddress();
         console.log(result);
+        localStorage.setItem("address", result.account.address);
+        localStorage.setItem("privateKey", result.account.privateKey);
+        console.log("localStorage: ", localStorage);
 
         navigate('/display-address', {state: {address: result.account.address, privateKey: result.account.privateKey}});
     }
