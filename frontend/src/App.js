@@ -7,6 +7,7 @@ import CreatePassword from './CreatePassword';
 import DisplayAddress from './DisplayAddress';
 import WalletInfo from './WalletInfo';
 import SendTransaction from './SendTransaction';
+import Login from './Login';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path='/display-address' element={<DisplayAddress/>} />
             <Route path='/wallet' element={<WalletInfo/>} />
             <Route path='/send-transaction' element={<SendTransaction/>} />
+            <Route path='/login' element={<Login/>} />
           </Routes>
       </Router>
     </div>
