@@ -6,10 +6,10 @@ import './WalletInfo.css';
 
 function WalletInfo(){
     const [tokens, setTokens] = useState([]);
-    console.log(process.env);
     const API_KEY = process.env.REACT_APP_API_KEY;
-    const PRIVATE_KEY = process.env.REACT_APP_PRIVATE_KEY;
-    const address = process.env.REACT_APP_PRIVATE_KEY;
+    const PRIVATE_KEY = localStorage.getItem("privateKey");
+    const PUBLIC_ADDRESS = localStorage.getItem("address");
+
     const navigate = useNavigate();
 
     const settings = {
@@ -22,7 +22,6 @@ function WalletInfo(){
 
     async function getTokens(){
         let allTokens = await alchemy.core.getTokensForOwner(wallet.address);
-        console.log("allTokens: ", allTokens);
         setTokens(allTokens.tokens);
     }
 
@@ -35,13 +34,14 @@ function WalletInfo(){
         evt.preventDefault();
         console.log("hanldeSendTransaction clicked");
         
-        console.log(alchemy, wallet);
-        navigate('/send-transaction', {state: {alchemy: alchemy, address: address}});
+        console.log(alchemy, wallet, tokens);
+        navigate('/send-transaction', {state: {settings: settings, allTokens: tokens}});
     }
 
     return(
         <div>
             <h1>Wallet Info:</h1>
+            <div>{PUBLIC_ADDRESS}</div>
             <button onClick={hanldeSendTransaction}>Send Transaction</button>
             <div className='token-balance'>
                 {tokens.map(token => {
