@@ -33,7 +33,7 @@ function WalletInfo(){
     function hanldeSendTransaction(evt){
         evt.preventDefault();
         console.log("hanldeSendTransaction clicked");
-        navigate('/send-transaction', {state: {settings: settings, allTokens: tokens}});
+        navigate('/send-transaction');
     }
 
     return(

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { Alchemy, Utils, Wallet } from 'alchemy-sdk';
+import { Alchemy, Utils, Wallet, Network } from 'alchemy-sdk';
 
 function SendTransaction(){
-
+    const API_KEY = process.env.REACT_APP_API_KEY;
     const [token, setToken] = useState('');
+    const [tokens, setTokens] = useState([]);
     const [amount, setAmount] = useState();
     const [receivingAddress, setReceivingAddress] = useState();
     const [gasLimit, setGasLimit] = useState();
@@ -14,9 +15,22 @@ function SendTransaction(){
 
     const location = useLocation();
 
-    const alchemy = new Alchemy(location.state.settings);
+    const settings = {
+        apiKey: API_KEY,
+        network: Network.ETH_GOERLI,
+    };
+
+    const alchemy = new Alchemy(settings);
     const wallet = new Wallet(localStorage.getItem("privateKey"));
-    const allTokens = location.state.allTokens;
+
+    async function getTokens(){
+        let allTokens = await alchemy.core.getTokensForOwner(wallet.address);
+        setTokens(allTokens.tokens);
+    }
+
+    useEffect(() => {
+        getTokens();
+    }, []);
 
     async function send(evt) {
         evt.preventDefault();
@@ -61,7 +75,7 @@ function SendTransaction(){
                     <form className="send-transaction">
                         <p>Choose Token</p>
                         <select onChange={(e) => setToken(e.target.value)}>
-                            {allTokens.map(t => {
+                            {tokens.map(t => {
                                 return (
                                     <option key={t.name}>{t.name}</option>
                                 )
