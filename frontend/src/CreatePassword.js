@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from "react-router-dom";
-const Web3 = require('web3');
+import { useNavigate, Link } from "react-router-dom";
+import './CreatePassword.css';
+import Web3 from 'web3';
 
 function CreatePassword(){
     const [password, setPassword] = useState();
@@ -66,6 +67,7 @@ function CreatePassword(){
                         <p><input type="password" name="passwordconfirm" placeholder="Confirm Password" onChange={(e) => setPasswordConfirm(e.target.value)} /></p>
                         <p style={{color: 'red'}}>{error}</p>
                         <button type="submit" disabled={disabled} onClick={handleCreatePassword}>Submit</button>
+                        <p className="message">Already have a Wallet? <Link to="/login">Import</Link></p>
                     </form>
                 </div>
             </div>
