@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import { Alchemy, Utils, Wallet, Network } from 'alchemy-sdk';
 
 function SendTransaction(){
@@ -12,8 +11,6 @@ function SendTransaction(){
     const [maxFeePerGas, setMaxFeePerGas] = useState();
     const [disabled, setDisabled] = useState(true);
     const [error, setError] = useState('');
-
-    const location = useLocation();
 
     const settings = {
         apiKey: API_KEY,
