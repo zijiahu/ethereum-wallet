@@ -39,21 +39,23 @@ function WalletInfo(){
     return(
         <div>
             <h1>Wallet Information:</h1>
-            <h2>Your public address:</h2>
-            <p>{PUBLIC_ADDRESS}</p>
-            <p></p>
-            <button onClick={hanldeSendTransaction}>Send Transaction</button>
-            <h2>Your balances:</h2>
-            <div className='token-balance'>
-                {tokens.map(token => {
-                    return (
-                        <section key={token.name}>
-                            <Token name={token.name}
-                            symbol={token.symbol}
-                            rawBalance={token.rawBalance}> </Token>
-                        </section>
-                    )
-                })}
+            <div className="wallet-info">
+                <h2>Your public address:</h2>
+                <p>{PUBLIC_ADDRESS}</p>
+                <p></p>
+                <button onClick={hanldeSendTransaction}>Send Transaction</button>
+                <h2>Your balances:</h2>
+                <div className='token-balance'>
+                    {tokens.map(token => {
+                        return (
+                            <section key={token.name}>
+                                <Token name={token.name}
+                                symbol={token.symbol}
+                                rawBalance={token.rawBalance}> </Token>
+                            </section>
+                        )
+                    })}
+                </div>
             </div>
         </div>
     );
