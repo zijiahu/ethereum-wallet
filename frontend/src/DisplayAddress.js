@@ -1,26 +1,14 @@
-import React, {useState} from 'react';
-import { useLocation, useNavigate } from "react-router-dom";
-// import Web3 from "web3";
-const Web3 = require('web3');
+import React from 'react';
+import { useNavigate } from "react-router-dom";
 
 function DisplayAddress(){
-    const location = useLocation();
     const navigate = useNavigate();
-
-    const [address, setAddress] = useState('');
-    const [privateKey, setPrivateKey] = useState('');
+    const privateKey = localStorage.getItem("privateKey");
+    const address = localStorage.getItem("address");
 
     function handleClicked(evt){
         evt.preventDefault();
         navigate('/wallet');
-    }
-
-    if(location.state !== null && location.state.address !== null){
-        setAddress(location.state.address);
-    }
-
-    if(location.state !== null && location.state.privateKey !== null){
-        setPrivateKey(location.state.privateKey);
     }
 
     return(
